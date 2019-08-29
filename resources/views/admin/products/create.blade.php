@@ -21,14 +21,14 @@
                         <input type="text" class="form-control-sm" name="price">
                     </div>
 {{--                    {{dd(\App\ProductCategorie::all())}}--}}
-{{--                    <div class="form-group">--}}
-{{--                            <label for="">Родительская категория</label>--}}
-{{--                            <select name="category_id" class="form-control">--}}
-{{--                                <option value="0">--Без родительской категории--</option>--}}
-{{--                                @include('admin.categories.partials.categories',['categories'=> \App\ProductCategorie::all()])--}}
+                    <div class="form-group">
+                            <label for="">Родительская категория</label>
+                            <select name="category_id" class="form-control">
+                                <option value="0">--Без родительской категории--</option>
+                                @include('admin.categories.partials.categories',['categories'=> \App\ProductCategorie::all()])
 {{--                                @include('categories.partials.categories')--}}
-{{--                            </select>--}}
-{{--                    </div>--}}
+                            </select>
+                    </div>
                     <p>В наличии <input type="checkbox" name="status" checked></p>
 
                     <div class="form-group">

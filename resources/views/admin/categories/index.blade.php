@@ -1,12 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="btn">
-        <a href="{{route('admin.category.create')}}">Добавить категорию</a>
-    </div>
-    Все категории
 <div class="container">
-    <div class="row">
+    @component('components.breadcrumb')
+        @slot('title') Управление категориями @endslot
+        @slot('parent_link'){{route('admin.index')}}@endslot
+        @slot('parent') Админка @endslot
+        @slot('active') Категории @endslot
+    @endcomponent
+        <div class="row">
+
+        <button  type="button" class="btn btn-success">
+            <a href="{{route('admin.category.create')}}">Добавить категорию</a>
+        </button>
         <table class="table table-bordered">
             <thead class="thead-light">
             <tr>

@@ -21,7 +21,6 @@
         @slot('active') Продукты @endslot
     @endcomponent
     <div class="row no-gutters">
-
         <div class="left-side col-md-3">
             <div class="container-fluid">
                 <div class="btn btn-success">
