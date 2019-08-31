@@ -9,7 +9,6 @@
         @slot('active') Категории @endslot
     @endcomponent
         <div class="row">
-
         <button  type="button" class="btn btn-success">
             <a href="{{route('admin.category.create')}}">Добавить категорию</a>
         </button>

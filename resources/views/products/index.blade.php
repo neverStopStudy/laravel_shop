@@ -16,9 +16,9 @@
     <div class="row no-gutters">
         <div class="left-side col-md-3">
             <div class="container-fluid">
-                <div class="btn btn-success">
-                    <a href="{{route('product.create')}}">Добавить товар</a>
-                </div>
+{{--                <div class="btn btn-success">--}}
+{{--                    <a href="{{route('product.create')}}">Добавить товар</a>--}}
+{{--                </div>--}}
                 <div class="btn">
                     <a href="{{route('category.index')}}">Категории</a>
                 </div>

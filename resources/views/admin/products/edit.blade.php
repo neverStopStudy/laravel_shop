@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
 @section('content')
     <div class="container">
         <h3>Изменить продукт id = {{$product->id}}</h3>

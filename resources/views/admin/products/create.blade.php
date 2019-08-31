@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
 
 {{--@extends('header')--}}
 @section('content')
@@ -9,6 +9,7 @@
                 <form action="{{route('admin.product.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
+
                         <p class="form-text">Название товара</p>
                         <input type="text" class="form-control" name="name" required value="{{old('name')}}">
                     </div>

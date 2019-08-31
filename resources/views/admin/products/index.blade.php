@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
 {{--{{use App\Product as Product;}}--}}
 <?php //use App\Product as Product ?>
 @section('content')
@@ -13,7 +13,6 @@
             padding-left: 0;
         }
     </style>
-
     @component('components.breadcrumb')
         @slot('title') Управление продуктами @endslot
         @slot('parent_link'){{route('admin.index')}}@endslot
@@ -49,7 +48,6 @@
                         <tbody>
                         @forelse($products as $product)
                             <tr>
-                                {{--                {{dd($loop)}}--}}
                                 <th scope="row">{{$loop->iteration}}</th>
                                 <td><a href="{{$product->id}}">{{$product->name}}</a></td>
                                 <td>{{ $product->category['title']}}</td>
@@ -78,18 +76,11 @@
                             </tr>
                         @empty
                             <tr class="table-warning">
-                                <td colspan="5">Категорий не обнаружено! Добавьте категорию!</td>
+                                <td colspan="7">Продуктов не обнаружено! Добавьте продукт!</td>
                             </tr>
                         @endforelse
                         </tbody>
                     </table>
-
-
-                    {{--                    <div class="card-columns">--}}
-                    {{--                        @foreach ($products as $product)--}}
-                    {{--                            @include('products.card', ['product' => $product])--}}
-                    {{--                        @endforeach--}}
-                    {{--                    </div>--}}
                 </div>
             </div>
         </div>
