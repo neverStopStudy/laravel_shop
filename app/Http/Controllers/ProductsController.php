@@ -91,4 +91,8 @@ class ProductsController extends Controller
         return redirect()->route('product.index');
     }
 
+    public function toBuy(Request $request)
+    {
+
+    }
 }

@@ -19,6 +19,8 @@
 //    return "Hello world";
 //});
 
+use App\Purchase;
+
 Auth::routes();
 
 
@@ -72,6 +74,8 @@ Route::namespace('Admin')->group(function () {
     Route::get('admin/category/{id}/edit','ProductCategoriesController@edit')->name('admin.category.edit');
     Route::put('admin/category/{id}/update','ProductCategoriesController@update')->name('admin.category.update');
     Route::get('admin/category/{id}/delete','ProductCategoriesController@destroy')->name('admin.category.destroy');
+
+    Route::get('/purchases','PurchasesController@index')->name('admin.purchase.index');
 });
 
 Route::get('/add-to-cart/{id}', 'ProductsController@addToCart')->name('product.addToCart');

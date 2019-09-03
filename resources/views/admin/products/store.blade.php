@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('admin.layouts.app')
 
 @section('content')
     <h1>Форма отправоена</h1>

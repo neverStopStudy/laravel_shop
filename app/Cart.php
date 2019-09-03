@@ -18,16 +18,28 @@ class Cart extends Model
             $this->totalPrice = $oldCart->totalPrice;
         }
     }
+//    public function add($item, $id){
+//        $storedItem  = ['quantity' => 0,'price' => $item->price,'item' => $item];
+//        if ($this->items){
+//            if (array_key_exists($id, $this->items)){
+//                $storedItem = $this->items[$id];
+//            }
+//        }
+//        $storedItem['quantity']++;
+//        $storedItem['price'] = $item->price * $storedItem['quantity'];
+//        $this->items[$id] = $storedItem;
+//        $this->totalQuantity++;
+//        $this->totalPrice += $item->price;
+//    }
 
     public function add($item, $id){
-        $storedItem  = ['quantity' => 0,'price' => $item->price,'item' => $item];
+        $storedItem  = ['price' => $item->price,'item' => $item];
         if ($this->items){
             if (array_key_exists($id, $this->items)){
                 $storedItem = $this->items[$id];
             }
         }
-        $storedItem['quantity']++;
-        $storedItem['price'] = $item->price * $storedItem['quantity'];
+        $storedItem['price'] = $item->price;
         $this->items[$id] = $storedItem;
         $this->totalQuantity++;
         $this->totalPrice += $item->price;
