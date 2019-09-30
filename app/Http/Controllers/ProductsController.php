@@ -31,6 +31,7 @@ class ProductsController extends Controller
             $gallery->product_id = $product_id;
             $gallery->save();
             $index = 1;
+
             foreach ($request->imgs as $img) {
                 $ext = $img->extension();
                 $path = $product_id . "/" . "$index" ."." . $ext;

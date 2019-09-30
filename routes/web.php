@@ -58,6 +58,8 @@ Route::get('/category/{id}/edit','ProductCategoriesController@edit')->name('cate
 Route::put('/category/{id}/update','ProductCategoriesController@update')->name('category.update');
 Route::get('/category/{id}/delete','ProductCategoriesController@destroy')->name('category.destroy');
 
+
+
 Route::namespace('Admin')->group(function () {
     Route::get('/','HomeController@index')->name('admin.index');
     Route::get('admin/products','ProductsController@index')->name('admin.product.index');
@@ -80,3 +82,4 @@ Route::namespace('Admin')->group(function () {
 
 Route::get('/add-to-cart/{id}', 'ProductsController@addToCart')->name('product.addToCart');
 Route::get('/cart','CartsController@allProducts')->name('cart.allProduct');
+Route::post('/cart/purchases','PurchasesController@store')->name('purchases.store');

@@ -43,10 +43,10 @@ class User extends Authenticatable
         return $this->hasMany('App\Comment');
     }
 
-    public function purchases()
-    {
-        return $this->hasMany('App\Purchase');
-    }
+//    public function purchases()
+//    {
+//        return $this->hasMany('App\Purchase');
+//    }
 
     public function AuthRouteAPI(Request $request){
         return $request->user();

@@ -19,25 +19,27 @@
                 <tbody>
                 @forelse($purchases as $purchase)
                     <tr>
+                        <?php $product = App\Product::where('id', $purchase->product_id)->get()->first()?>
+
                         <th scope="row">{{$loop->iteration}}</th>
-                        <td><a href="{{$purchase->product_id}}">{{$purchase-$product->name}}</a></td>
-                        <td>{{ $purchase->price}}</td>
+                        <td><a href="{{$purchase->product_id}}">{{$product->name}}</a></td>
+                        <td>{{ $purchase->phone}}</td>
                         <td>{{ $product->price . " грн"}}</td>
                         <td>
                             @if($product->status == 1)
-                                <i class="fas fa-check"></i>Опубликовано
+                                <i class="fas fa-check"></i>Опачено
                             @else
-                                <i class="fas fa-times"></i>Не опубликовано
+                                <i class="fas fa-times"></i>Не оплачено
                             @endif
                         </td>
-                        <td>{{ count($product->comments)}}</td>
+                        <td>{{$purchase->created_at}}</td>
                         <td>
-                            <a href="{{route('admin.product.edit', $product->id)}}">Изменить</a>
-                            <form action="{{route('admin.product.destroy', $product->id)}}" method="get">
-                                @csrf
-                                @method("DELETE")
-                                <input type="submit" value="Удалить">
-                            </form>
+{{--                            <a href="{{route('admin.product.edit', $product->id)}}">Изменить</a>--}}
+{{--                            <form action="{{route('admin.product.destroy', $product->id)}}" method="get">--}}
+{{--                                @csrf--}}
+{{--                                @method("DELETE")--}}
+{{--                                <input type="submit" value="Удалить">--}}
+{{--                            </form>--}}
                         </td>
                     </tr>
                 @empty
@@ -47,5 +49,4 @@
                 @endforelse
                 </tbody>
             </table>
-
 @endsection
