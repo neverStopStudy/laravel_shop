@@ -4,6 +4,20 @@
 
     <div class="container">
         <div class="raw">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#!">Все</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#!">Новые</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#!">Оплаченые</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#!">Не Оплаченые</a>
+                </li>
+            </ul>
             <table class="table table-bordered">
                 <thead class="thead-light">
                 <tr>
@@ -26,20 +40,20 @@
                         <td>{{ $purchase->phone}}</td>
                         <td>{{ $product->price . " грн"}}</td>
                         <td>
-                            @if($product->status == 1)
-                                <i class="fas fa-check"></i>Опачено
+                            @if($purchase->status == 1)
+                                <i class="fas fa-check"></i>Оплачено
                             @else
                                 <i class="fas fa-times"></i>Не оплачено
                             @endif
                         </td>
                         <td>{{$purchase->created_at}}</td>
                         <td>
-{{--                            <a href="{{route('admin.product.edit', $product->id)}}">Изменить</a>--}}
-{{--                            <form action="{{route('admin.product.destroy', $product->id)}}" method="get">--}}
-{{--                                @csrf--}}
-{{--                                @method("DELETE")--}}
-{{--                                <input type="submit" value="Удалить">--}}
-{{--                            </form>--}}
+                            <a href="{{route('admin.purchase.update', $purchase->id)}}">Изменить</a>
+                            <form action="{{route('admin.purchase.destroy', $purchase->id)}}" method="get">
+                                @csrf
+                                @method("DELETE")
+                                <input type="submit" value="Удалить">
+                            </form>
                         </td>
                     </tr>
                 @empty

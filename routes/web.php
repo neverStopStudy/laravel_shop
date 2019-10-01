@@ -78,6 +78,9 @@ Route::namespace('Admin')->group(function () {
     Route::get('admin/category/{id}/delete','ProductCategoriesController@destroy')->name('admin.category.destroy');
 
     Route::get('/purchases','PurchasesController@index')->name('admin.purchase.index');
+    Route::get('/purchases/{id}/edit','PurchasesController@edit')->name('admin.purchase.edit');
+    Route::get('/purchases/{id}/update','PurchasesController@update')->name('admin.purchase.update');
+    Route::get('/purchases/{id}/delete','PurchasesController@delete')->name('admin.purchase.destroy');
 });
 
 Route::get('/add-to-cart/{id}', 'ProductsController@addToCart')->name('product.addToCart');

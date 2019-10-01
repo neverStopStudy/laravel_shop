@@ -21,7 +21,7 @@ class PurchasesController extends Controller
             $purchase->product_id = $item['item']['id'];
             $purchase->save();
         }
-            session()->forget('cart');
+        session()->forget('cart');
         return redirect()->route('product.index');
     }
 }
