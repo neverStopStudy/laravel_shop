@@ -5,13 +5,13 @@
         <div class="raw">
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active" href="{{route('admin.purchase.index')}}">Все</a>
+                    <a class="nav-link" href="{{route('admin.purchase.index')}}">Все</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('admin.purchase.newpurchases')}}">Новые</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('admin.purchase.paid')}}">Оплаченые</a>
+                    <a class="nav-link active" href="{{route('admin.purchase.paid')}}">Оплаченые</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('admin.purchase.unpaid')}}">Не Оплаченые</a>
@@ -19,15 +19,15 @@
             </ul>
             <table class="table table-bordered">
                 <thead class="thead-light">
-                    <tr>
-                        <th>#</th>
-                        <th>Имя Продукта</th>
-                        <th>Заказчик</th>
-                        <th>Цена</th>
-                        <th>Статус</th>
-                        <th>Дата</th>
-                        <th>Действия</th>
-                    </tr>
+                <tr>
+                    <th>#</th>
+                    <th>Имя Продукта</th>
+                    <th>Заказчик</th>
+                    <th>Цена</th>
+                    <th>Статус</th>
+                    <th>Дата</th>
+                    <th>Действия</th>
+                </tr>
                 </thead>
                 <tbody>
                 @forelse($purchases as $purchase)
@@ -57,7 +57,7 @@
                     </tr>
                 @empty
                     <tr class="table-warning">
-                        <td colspan="7">Заказов не обнаружено! Плохо работаешь!</td>
+                        <td colspan="7">Новых заказов нет!</td>
                     </tr>
                 @endforelse
                 </tbody>
