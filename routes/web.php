@@ -1,39 +1,6 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-//Route::get('/', function () {
-//    return view('welcome');
-//});
-
-//Route::get('/profile', function () {
-//    return "Hello world";
-//});
-
 use App\Purchase;
-
-Auth::routes();
-
-
-
-Route::get('/','ProductsController@index')->name('index');
-
-
-//Route::get('/product/view/{id}','ProductsController@view')->name('view.product');
-//Route::get('/product/create','ProductsController@create')->name('create.product');
-//
-//Route::get('/product/delete/{$id}','ProductsController@destroy')->name('delete.product');
-//
-//Route::post('/product/store','ProductsController@store')->name('store.product');
 
 Auth::routes();
 
@@ -50,7 +17,6 @@ Route::get('/product/{id}/edit','ProductsController@edit')->name('product.edit')
 Route::put('/product/{id}/update','ProductsController@update')->name('product.update');
 Route::get('/product/{id}/delete','ProductsController@destroy')->name('product.destroy');
 
-
 Route::get('/categories','ProductCategoriesController@index')->name('category.index');
 Route::get('/category/create','ProductCategoriesController@create')->name('category.create');
 Route::post('/category/create','ProductCategoriesController@store')->name('category.store');
@@ -58,9 +24,8 @@ Route::get('/category/{id}/edit','ProductCategoriesController@edit')->name('cate
 Route::put('/category/{id}/update','ProductCategoriesController@update')->name('category.update');
 Route::get('/category/{id}/delete','ProductCategoriesController@destroy')->name('category.destroy');
 
-
-
 Route::namespace('Admin')->group(function () {
+//    Auth::routes();
     Route::get('/','HomeController@index')->name('admin.index');
     Route::get('admin/products','ProductsController@index')->name('admin.product.index');
     Route::get('admin/product/create','ProductsController@create')->name('admin.product.create');
@@ -81,7 +46,6 @@ Route::namespace('Admin')->group(function () {
     Route::get('/purchases/new','PurchasesController@newpurchases')->name('admin.purchase.newpurchases');
     Route::get('/purchases/paid','PurchasesController@paid')->name('admin.purchase.paid');
     Route::get('/purchases/unpaid','PurchasesController@unpaid')->name('admin.purchase.unpaid');
-
     Route::get('/purchases/{id}/edit','PurchasesController@edit')->name('admin.purchase.edit');
     Route::get('/purchases/{id}/update','PurchasesController@update')->name('admin.purchase.update');
     Route::get('/purchases/{id}/delete','PurchasesController@delete')->name('admin.purchase.destroy');

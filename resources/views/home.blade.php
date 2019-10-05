@@ -1,22 +1,30 @@
+
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-                    You are logged in!
+
+    <?php $purchases = App\Purchase::all()->where('phone',Auth::user()->phone)?>
+<div class="container">
+    <div class="row">
+        @forelse($purchases as $purchase)
+            <?php $product = App\Product::where('id',$purchase->product_id)->first() ?>
+            <?php $gallery = App\Gallery::where('product_id',$product->id)->first() ?>
+            <?php $img = App\Image::where('gallery_id',$gallery->id)->first() ?>
+{{--        {{dd($product)}}--}}
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{$img->link}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{$product->name}}</h5>
+                        <p class="card-text">{{$product->description}}</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
                 </div>
             </div>
-        </div>
+        @empty
+            <div class=""> Нету заказов!</div>
+        @endforelse
     </div>
 </div>
 @endsection
