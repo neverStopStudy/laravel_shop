@@ -66,7 +66,7 @@
 
                                     <div class="form-group">
                                         <label for="formGroupExampleInput2">Телефон</label>
-                                        <input type="text" class="form-control" name="phone" id="formGroupExampleInput2" placeholder="Телефон">
+                                        <input type="text" class="form-control" name="phone" id="formGroupExampleInput2" placeholder="Телефон" value="{{Auth::user()->phone}}">
                                     </div>
 
     {{--                        @endif--}}
