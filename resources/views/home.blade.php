@@ -3,7 +3,6 @@
 
 @section('content')
 
-
     <?php $purchases = App\Purchase::all()->where('phone',Auth::user()->phone)?>
 <div class="container">
     <div class="row">
