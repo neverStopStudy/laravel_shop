@@ -1,6 +1,7 @@
 <?php
 
 use App\Purchase;
+use App\Http\Middleware\CheckUserRole;
 
 Auth::routes();
 
@@ -23,32 +24,33 @@ Route::post('/category/create','ProductCategoriesController@store')->name('categ
 Route::get('/category/{id}/edit','ProductCategoriesController@edit')->name('category.edit');
 Route::put('/category/{id}/update','ProductCategoriesController@update')->name('category.update');
 Route::get('/category/{id}/delete','ProductCategoriesController@destroy')->name('category.destroy');
+Route::middleware(CheckUserRole::class)->group(function () {
+    Route::namespace('Admin')->group(function () {
+        //    Auth::routes();
+        Route::get('/', 'HomeController@index')->name('admin.index');
+        Route::get('admin/products', 'ProductsController@index')->name('admin.product.index');
+        Route::get('admin/product/create', 'ProductsController@create')->name('admin.product.create');
+        Route::post('admin/product/create', 'ProductsController@store')->name('admin.product.store');
+        Route::get('admin/product/{id}/show', 'ProductsController@show')->name('admin.product.show');
+        Route::get('admin/product/{id}/edit', 'ProductsController@edit')->name('admin.product.edit');
+        Route::put('admin/product/{id}/update', 'ProductsController@update')->name('admin.product.update');
+        Route::get('admin/product/{id}/delete', 'ProductsController@destroy')->name('admin.product.destroy');
 
-Route::namespace('Admin')->group(function () {
-//    Auth::routes();
-    Route::get('/','HomeController@index')->name('admin.index');
-    Route::get('admin/products','ProductsController@index')->name('admin.product.index');
-    Route::get('admin/product/create','ProductsController@create')->name('admin.product.create');
-    Route::post('admin/product/create','ProductsController@store')->name('admin.product.store');
-    Route::get('admin/product/{id}/show','ProductsController@show')->name('admin.product.show');
-    Route::get('admin/product/{id}/edit','ProductsController@edit')->name('admin.product.edit');
-    Route::put('admin/product/{id}/update','ProductsController@update')->name('admin.product.update');
-    Route::get('admin/product/{id}/delete','ProductsController@destroy')->name('admin.product.destroy');
+        Route::get('admin/categories', 'ProductCategoriesController@index')->name('admin.category.index');
+        Route::get('admin/category/create', 'ProductCategoriesController@create')->name('admin.category.create');
+        Route::post('admin/category/create', 'ProductCategoriesController@store')->name('admin.category.store');
+        Route::get('admin/category/{id}/edit', 'ProductCategoriesController@edit')->name('admin.category.edit');
+        Route::put('admin/category/{id}/update', 'ProductCategoriesController@update')->name('admin.category.update');
+        Route::get('admin/category/{id}/delete', 'ProductCategoriesController@destroy')->name('admin.category.destroy');
 
-    Route::get('admin/categories','ProductCategoriesController@index')->name('admin.category.index');
-    Route::get('admin/category/create','ProductCategoriesController@create')->name('admin.category.create');
-    Route::post('admin/category/create','ProductCategoriesController@store')->name('admin.category.store');
-    Route::get('admin/category/{id}/edit','ProductCategoriesController@edit')->name('admin.category.edit');
-    Route::put('admin/category/{id}/update','ProductCategoriesController@update')->name('admin.category.update');
-    Route::get('admin/category/{id}/delete','ProductCategoriesController@destroy')->name('admin.category.destroy');
-
-    Route::get('/purchases','PurchasesController@index')->name('admin.purchase.index');
-    Route::get('/purchases/new','PurchasesController@newpurchases')->name('admin.purchase.newpurchases');
-    Route::get('/purchases/paid','PurchasesController@paid')->name('admin.purchase.paid');
-    Route::get('/purchases/unpaid','PurchasesController@unpaid')->name('admin.purchase.unpaid');
-    Route::get('/purchases/{id}/edit','PurchasesController@edit')->name('admin.purchase.edit');
-    Route::get('/purchases/{id}/update','PurchasesController@update')->name('admin.purchase.update');
-    Route::get('/purchases/{id}/delete','PurchasesController@delete')->name('admin.purchase.destroy');
+        Route::get('/purchases', 'PurchasesController@index')->name('admin.purchase.index');
+        Route::get('/purchases/new', 'PurchasesController@newpurchases')->name('admin.purchase.newpurchases');
+        Route::get('/purchases/paid', 'PurchasesController@paid')->name('admin.purchase.paid');
+        Route::get('/purchases/unpaid', 'PurchasesController@unpaid')->name('admin.purchase.unpaid');
+        Route::get('/purchases/{id}/edit', 'PurchasesController@edit')->name('admin.purchase.edit');
+        Route::get('/purchases/{id}/update', 'PurchasesController@update')->name('admin.purchase.update');
+        Route::get('/purchases/{id}/delete', 'PurchasesController@delete')->name('admin.purchase.destroy');
+    });
 });
 
 Route::get('/add-to-cart/{id}', 'ProductsController@addToCart')->name('product.addToCart');
