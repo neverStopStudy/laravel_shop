@@ -10,6 +10,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Route::resource('product','ProductsController');
 Route::resource('product/comment','CommentsController');
 
+Route::get('/','ProductsController@index')->name('product.index');
 Route::get('/products','ProductsController@index')->name('product.index');
 Route::get('/product/create','ProductsController@create')->name('product.create');
 Route::post('/product/create','ProductsController@store')->name('product.store');
@@ -24,10 +25,11 @@ Route::post('/category/create','ProductCategoriesController@store')->name('categ
 Route::get('/category/{id}/edit','ProductCategoriesController@edit')->name('category.edit');
 Route::put('/category/{id}/update','ProductCategoriesController@update')->name('category.update');
 Route::get('/category/{id}/delete','ProductCategoriesController@destroy')->name('category.destroy');
+
 Route::middleware(CheckUserRole::class)->group(function () {
     Route::namespace('Admin')->group(function () {
         //    Auth::routes();
-        Route::get('/', 'HomeController@index')->name('admin.index');
+        Route::get('admin/', 'HomeController@index')->name('admin.index');
         Route::get('admin/products', 'ProductsController@index')->name('admin.product.index');
         Route::get('admin/product/create', 'ProductsController@create')->name('admin.product.create');
         Route::post('admin/product/create', 'ProductsController@store')->name('admin.product.store');
