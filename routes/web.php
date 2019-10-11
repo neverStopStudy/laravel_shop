@@ -52,6 +52,18 @@ Route::middleware(CheckUserRole::class)->group(function () {
         Route::get('/purchases/{id}/edit', 'PurchasesController@edit')->name('admin.purchase.edit');
         Route::get('/purchases/{id}/update', 'PurchasesController@update')->name('admin.purchase.update');
         Route::get('/purchases/{id}/delete', 'PurchasesController@delete')->name('admin.purchase.destroy');
+
+        Route::get('/users', 'UsersController@index')->name('admin.user.index');
+
+//        Route::get('/purchases/new', 'PurchasesController@newpurchases')->name('admin.purchase.newpurchases');
+//        Route::get('/purchases/paid', 'PurchasesController@paid')->name('admin.purchase.paid');
+//        Route::get('/purchases/unpaid', 'PurchasesController@unpaid')->name('admin.purchase.unpaid');
+//        Route::get('/purchases/{id}/edit', 'PurchasesController@edit')->name('admin.purchase.edit');
+//        Route::get('/purchases/{id}/update', 'PurchasesController@update')->name('admin.purchase.update');
+//        Route::get('/purchases/{id}/delete', 'PurchasesController@delete')->name('admin.purchase.destroy');
+
+
+        Route::get('/users', 'UsersController@index')->name('admin.user.index');
     });
 });
 

@@ -15,7 +15,8 @@ class CreatePurchasesTable extends Migration
     {
         Schema::create('purchases', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('phone')->default('095646');
+            $table->integer('user_id')->nullable();
+            $table->integer('phone');
             $table->integer('product_id');
             $table->boolean('status')->default(0);
             $table->timestamps();
