@@ -29,6 +29,12 @@ class PurchasesController extends Controller
         return redirect()->route('admin.purchase.index');
     }
 
+    public function view($id)
+    {
+        $purchases = Purchase::all()->where('user_id', $id);
+        return  view('admin.purchases.view',['purchases' => $purchases,"user_id" => $id]);
+    }
+
     public function destroy($id)
     {
         Purchase::destroy($id);

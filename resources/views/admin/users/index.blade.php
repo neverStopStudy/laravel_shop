@@ -12,25 +12,33 @@
                         <th>Категория</th>
                         <th>Цена</th>
                         <th>Зарегистрирован</th>
-{{--                        <th>Коментариев</th>--}}
+                        <th>Заказы</th>
 {{--                        <th>Действия</th>--}}
                     </tr>
                     </thead>
                     <tbody>
                     @forelse($users as $user)
+{{--                        {{dd($user->purchase)}}--}}
                         <tr>
                             <th scope="row">{{$loop->iteration}}</th>
                             <td><a href="{{$user->id}}">{{$user->name}}</a></td>
                             <td>{{ $user->email}}</td>
                             <td>{{ $user->phone . " грн"}}</td>
                             <td>{{ $user->created_at }}</td>
-    {{--                        <td>--}}
-    {{--                            @if($product->status == 1)--}}
-    {{--                                <i class="fas fa-check"></i>Опубликовано--}}
-    {{--                            @else--}}
-    {{--                                <i class="fas fa-times"></i>Не опубликовано--}}
-    {{--                            @endif--}}
-    {{--                        </td>--}}
+                            @if(!App\Purchase::all()->find($user->id) == 0)
+                            <td><a href="{{route('admin.purchase.view',['purchases' => App\Purchase::find($user->id)])}}">Заказы</a></td>
+                            @else
+                                <td>Нет Заказов</td>
+                            @endif
+{{--                            <td>{{ $purchases = App\Purchase::find($user->id) }}</td>--}}
+{{--                            $comments = App\Purchse::find($product->id--}}
+{{--                            <td>--}}
+{{--                                @if($product->status == 1)--}}
+{{--                                    <i class="fas fa-check"></i>Опубликовано--}}
+{{--                                @else--}}
+{{--                                    <i class="fas fa-times"></i>Не опубликовано--}}
+{{--                                @endif--}}
+{{--                            </td>--}}
     {{--                        <td>{{ count($product->comments)}}</td>--}}
     {{--                        <td>--}}
     {{--                            <a href="{{route('admin.product.edit', $product->id)}}">Изменить</a>--}}

@@ -52,6 +52,7 @@ Route::middleware(CheckUserRole::class)->group(function () {
         Route::get('/purchases/{id}/edit', 'PurchasesController@edit')->name('admin.purchase.edit');
         Route::get('/purchases/{id}/update', 'PurchasesController@update')->name('admin.purchase.update');
         Route::get('/purchases/{id}/delete', 'PurchasesController@delete')->name('admin.purchase.destroy');
+        Route::get('/purchases/user/{id}/view', 'PurchasesController@view')->name('admin.purchase.view');
 
         Route::get('/users', 'UsersController@index')->name('admin.user.index');
 
