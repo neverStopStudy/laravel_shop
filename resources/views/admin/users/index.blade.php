@@ -8,9 +8,9 @@
                     <thead class="thead-light">
                     <tr>
                         <th>#</th>
-                        <th>Имя Продукта</th>
+                        <th>Имя</th>
                         <th>Категория</th>
-                        <th>Цена</th>
+                        <th>Телефон</th>
                         <th>Зарегистрирован</th>
                         <th>Заказы</th>
 {{--                        <th>Действия</th>--}}
@@ -18,14 +18,14 @@
                     </thead>
                     <tbody>
                     @forelse($users as $user)
-{{--                        {{dd($user->purchase)}}--}}
+
                         <tr>
                             <th scope="row">{{$loop->iteration}}</th>
                             <td><a href="{{$user->id}}">{{$user->name}}</a></td>
                             <td>{{ $user->email}}</td>
                             <td>{{ $user->phone . " грн"}}</td>
                             <td>{{ $user->created_at }}</td>
-                            @if(!App\Purchase::all()->find($user->id) == 0)
+                            @if(count($user->purchases) > 0 )
                             <td><a href="{{route('admin.purchase.view',['purchases' => App\Purchase::find($user->id)])}}">Заказы</a></td>
                             @else
                                 <td>Нет Заказов</td>

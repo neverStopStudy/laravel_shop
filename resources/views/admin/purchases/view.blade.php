@@ -4,7 +4,7 @@
 <div class="container">
     <div class="raw">
         <div class="raw">
-            <div class="alert">Заказы пользователя c id= {{ $user_id}}</div>
+            <div class="alert">Заказы пользователя c id= {{$user_id}}</div>
             <div class="alert">Всего заказов пользователя {{count($purchases)}}</div>
             <table class="table table-bordered">
                 <thead class="thead-light">
@@ -13,19 +13,18 @@
                     <th>Имя Продукта</th>
                     <th>Категория</th>
                     <th>Цена</th>
-                    <th>Зарегистрирован</th>
-                    <th>Заказы</th>
-                    {{--                        <th>Действия</th>--}}
+                    <th>Оплачено</th>
+                    <th>Дата заказа</th>
+                    <th>Действия</th>
                 </tr>
                 </thead>
                 <tbody>
                     @forelse($purchases as $purchase)
                         <tr>
-                            <?php $product = App\Product::where('id', $purchase->product_id)->get()->first()?>
                             <th scope="row">{{$loop->iteration}}</th>
-                            <td><a href="{{$purchase->product_id}}">{{$product->name}}</a></td>
-                            <td>{{ $purchase->phone}}</td>
-                            <td>{{ $product->price . " грн"}}</td>
+                            <td><a href="{{$purchase->product_id}}">{{$purchase->product->name}}</a></td>
+                            <td>{{ $purchase->product->category->title}}</td>
+                            <td>{{ $purchase->product->price . " грн"}}</td>
                             <td>
                                 @if($purchase->status == 1)
                                     <i class="fas fa-check"></i>Оплачено
