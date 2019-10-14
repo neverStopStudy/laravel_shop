@@ -30,7 +30,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                @forelse($purchases as $purchase)
+                @forelse($paginator as $purchase)
                     <tr>
                         <?php $product = App\Product::where('id', $purchase->product_id)->get()->first()?>
 
@@ -62,6 +62,18 @@
                 @endforelse
                 </tbody>
             </table>
+            @if($paginator->total() > $paginator->count())
+
+                <div class="row justify-content-center">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                {{$paginator->links()}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
         </div>
     </div>
 @endsection

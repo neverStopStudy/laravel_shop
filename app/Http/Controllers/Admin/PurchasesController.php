@@ -12,8 +12,8 @@ class PurchasesController extends Controller
 {
     public function index()
     {
-        $purchases = Purchase::all();
-        return  view('admin.purchases.index',['purchases' => $purchases]);
+        $paginator = Purchase::paginate(2);
+        return  view('admin.purchases.index',['paginator' => $paginator]);
     }
 
     public function edit($id){
