@@ -23,8 +23,8 @@ class Purchase extends Model
 
     public static function createPurchase(Request $request, $item){
         $purchase = new Purchase();
-
-        if(Auth::user()->id){
+//        dd(Auth::user());
+        if(Auth::user()){
             $purchase->user_id = Auth::user()->id;
         }
         $purchase->phone = $request->phone;

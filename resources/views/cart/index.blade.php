@@ -66,7 +66,8 @@
 
                                     <div class="form-group">
                                         <label for="formGroupExampleInput2">Телефон</label>
-                                        <input type="text" class="form-control" name="phone" id="formGroupExampleInput2" placeholder="Телефон" value="{{Auth::user()->phone}}">
+                                        <input type="text" class="form-control" name="phone" id="formGroupExampleInput2" placeholder="Телефон"
+                                               value="@if(Auth::user()){{Auth::user()->phone }}@endif">
                                     </div>
 
     {{--                        @endif--}}
